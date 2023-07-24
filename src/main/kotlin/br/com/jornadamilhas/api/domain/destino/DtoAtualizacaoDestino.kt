@@ -1,15 +1,14 @@
-package br.com.jornadamilhas.api.domain.depoimento
+package br.com.jornadamilhas.api.domain.destino
 
-import jakarta.validation.constraints.NotBlank
 import org.hibernate.validator.constraints.URL
 import org.jetbrains.annotations.NotNull
+import java.math.BigDecimal
 
-data class DtoAtualizacaoDepoimento(
+data class DtoAtualizacaoDestino(
     @NotNull
     val id: Long,
     @URL
     val fotoUrl: String?,
     val nome:String?,
-    @NotBlank
-    val depoimento: String){
+    val preco: BigDecimal?){
 }
