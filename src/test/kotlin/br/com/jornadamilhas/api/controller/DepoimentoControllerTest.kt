@@ -143,7 +143,7 @@ class DepoimentoControllerTest(
     @DisplayName("Dado um JSON válido com id inválido, Quando tentar atualizar um depoimento, Deve devolver HTTP 404")
     fun atualizar3() {
         Mockito
-            .`when`(repository.getReferenceById(Mockito.any()))
+            .`when`(repository.getReferenceById(Mockito.anyLong()))
             .thenThrow(EntityNotFoundException()) // simulando que o ID lançará erro de entidade não encontrada
 
         mockMvc
