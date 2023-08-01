@@ -8,7 +8,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 @RestControllerAdvice
 class TratadorDeErros {
 
-    @ExceptionHandler(EntityNotFoundException::class)
+    @ExceptionHandler (EntityNotFoundException::class)
     fun tratarErro404() : ResponseEntity<Any> = ResponseEntity.notFound().build()
+
+    @ExceptionHandler (DestinoNaoEncontradoException::class)
+    fun tratarDestinoNaoEncontrado() = ResponseEntity
+        .badRequest()
+        .body(DtoException("Nenhum destino foi encontrado!"))
+
+    @ExceptionHandler(DepoimentoNaoEncontradoException::class)
+    fun tratarDepoimentoNaoEncontrado() = ResponseEntity
+        .badRequest()
+        .body(DtoException("Nenhum depoimento encontrado!"))
 
 }

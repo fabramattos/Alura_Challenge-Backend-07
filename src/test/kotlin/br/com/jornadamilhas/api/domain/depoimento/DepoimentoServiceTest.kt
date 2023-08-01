@@ -1,7 +1,9 @@
 package br.com.jornadamilhas.api.domain.depoimento
 
+import br.com.jornadamilhas.api.service.DepoimentoService
 import jakarta.persistence.EntityManager
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

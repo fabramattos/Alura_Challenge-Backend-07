@@ -4,10 +4,12 @@ import jakarta.validation.constraints.NotBlank
 import org.hibernate.validator.constraints.URL
 
 data class DtoCadastroDepoimento(
-    @NotBlank @URL
+    @field: NotBlank @field: URL
     val fotoUrl: String,
-    @NotBlank
+
+    @field: NotBlank
     val nome:String,
-    @NotBlank
+
+    @field: NotBlank
     val depoimento: String) {
 }

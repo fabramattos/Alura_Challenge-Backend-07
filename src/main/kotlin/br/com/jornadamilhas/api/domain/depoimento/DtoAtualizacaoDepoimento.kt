@@ -5,11 +5,14 @@ import org.hibernate.validator.constraints.URL
 import org.jetbrains.annotations.NotNull
 
 data class DtoAtualizacaoDepoimento(
-    @NotNull
+    @field: NotNull
     val id: Long,
-    @URL
+
+    @field: URL
     val fotoUrl: String?,
+
     val nome:String?,
-    @NotBlank
+
+    @field: NotBlank
     val depoimento: String){
 }

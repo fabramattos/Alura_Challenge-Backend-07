@@ -23,10 +23,12 @@ class Depoimento(
     @NotNull
     var depoimento: String
 ) {
-    fun atualizarInformacoes(dados: DtoAtualizacaoDepoimento) {
+    fun atualizarInformacoes(dados: DtoAtualizacaoDepoimento): Depoimento {
         dados.fotoUrl?.let { foto = it }
         dados.nome?.let { nome = it }
         depoimento = dados.depoimento
+
+        return this
     }
 
     constructor(dados : DtoCadastroDepoimento) :

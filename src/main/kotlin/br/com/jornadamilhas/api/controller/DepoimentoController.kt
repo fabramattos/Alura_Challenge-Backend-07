@@ -1,20 +1,24 @@
 package br.com.jornadamilhas.api.controller
 
 import br.com.jornadamilhas.api.domain.depoimento.*
+import br.com.jornadamilhas.api.service.DepoimentoService
 import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
-class DepoimentoController(private val repository: DepoimentoRepository) {
+class DepoimentoController(private val service: DepoimentoService) {
 
     @Transactional
     @PostMapping("/depoimentos")
-    fun criar(@RequestBody @Valid dados : DtoCadastroDepoimento, uriBuilder: UriComponentsBuilder): ResponseEntity<DtoDetalhamentoDepoimento> {
-        val depoimento = Depoimento(dados)
-        repository.save(depoimento)
+    fun criar(@RequestBody @Valid dados: DtoCadastroDepoimento,
+              uriBuilder: UriComponentsBuilder,
+    ): ResponseEntity<DtoDetalhamentoDepoimento> {
+
+        val depoimento = service.salvar(dados)
 
         val uri = uriBuilder
             .path("depoimentos/{id}")
@@ -27,38 +31,33 @@ class DepoimentoController(private val repository: DepoimentoRepository) {
     }
 
     @GetMapping("/depoimentos")
-    fun exibir(@RequestParam id: Long) : ResponseEntity<DtoDetalhamentoDepoimento>{
-        val depoimento = repository.getReferenceById(id)
+    fun exibir(@RequestParam id: Long): ResponseEntity<DtoDetalhamentoDepoimento> {
+        val depoimento = service.buscaPorId(id)
         return ResponseEntity.ok(DtoDetalhamentoDepoimento(depoimento))
     }
 
     @Transactional
     @PutMapping("/depoimentos")
-    fun atualiza(@RequestBody @Valid dados: DtoAtualizacaoDepoimento) : ResponseEntity<DtoDetalhamentoDepoimento>{
-        val depoimento = repository.getReferenceById(dados.id)
-        depoimento.atualizarInformacoes(dados)
+    fun atualiza(@RequestBody @Valid dados: DtoAtualizacaoDepoimento): ResponseEntity<DtoDetalhamentoDepoimento> {
+        val depoimento =  service.atualiza(dados)
+
         return ResponseEntity.ok(DtoDetalhamentoDepoimento(depoimento))
     }
+
     @Transactional
     @DeleteMapping("/depoimentos")
-    fun delete(@RequestParam id : Long) : ResponseEntity<Any>{
-        repository.deleteById(id)
-        return ResponseEntity.noContent().build()
-    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(@RequestParam id: Long) = service.deletar(id)
 
 
     @GetMapping("/depoimentos-home")
-    fun home() : ResponseEntity<List<DtoDetalhamentoDepoimento>>{
-        val listaDto = DepoimentoService(repository)
+    fun home(): ResponseEntity<List<DtoDetalhamentoDepoimento>> {
+        val depoimentos = service
             .escolheTresAleatorios()
-            .map { depoimento -> DtoDetalhamentoDepoimento(depoimento) }
+            .map { DtoDetalhamentoDepoimento(it) }
 
-        return ResponseEntity.ok(listaDto)
+        return ResponseEntity.ok(depoimentos)
     }
-
-
-
-
 
 
 }
