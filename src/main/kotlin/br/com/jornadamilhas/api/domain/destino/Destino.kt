@@ -1,18 +1,10 @@
 package br.com.jornadamilhas.api.domain.destino
 
 import jakarta.persistence.*
-import lombok.AllArgsConstructor
-import lombok.EqualsAndHashCode
-import lombok.Getter
-import lombok.NoArgsConstructor
 import java.math.BigDecimal
 
 @Table(name = "destinos")
 @Entity(name = "Destino")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = ["id"])
 class Destino(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Long,

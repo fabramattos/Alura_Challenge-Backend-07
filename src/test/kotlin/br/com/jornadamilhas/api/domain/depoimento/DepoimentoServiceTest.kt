@@ -1,57 +1,68 @@
 package br.com.jornadamilhas.api.domain.depoimento
 
+import br.com.jornadamilhas.api.infra.exception.DepoimentoNaoEncontradoException
 import br.com.jornadamilhas.api.service.DepoimentoService
-import jakarta.persistence.EntityManager
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.test.context.ActiveProfiles
+import org.junit.jupiter.api.assertThrows
+import org.mockito.Mockito
+import java.util.*
 
-@ActiveProfiles("test")
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class DepoimentoServiceTest(
-    @Autowired val repository: DepoimentoRepository,
-    @Autowired val em : EntityManager)
-{
+class DepoimentoServiceTest {
 
+    private val repository = mockk<DepoimentoRepository> {}
+    private val depoimento = DepoimentoTest.build()
     private val service = DepoimentoService(repository)
 
     @Test
     @DisplayName("Dado um BD com menos de 3 depoimentos, Quando solicitado 3 aleatorios, Deve retornar o total disponivel")
     fun escolheTresAleatoriosCenario1() {
-        criaDepoimentos(2)
+        val depoimentos = DepoimentoTest.buildLista(2)
+        every { repository.findAll() } returns depoimentos
+
         val listaAleatoria = service.escolheTresAleatorios()
 
+        verify(exactly = 1) { repository.findAll() }
         assertEquals(2, listaAleatoria.size)
     }
 
     @Test
     @DisplayName("Dado um BD com mais de 3 depoimentos, Quando solicitado 3 aleatorios, Deve retornar 3 aleatorios")
     fun escolheTresAleatoriosCenario2() {
-        criaDepoimentos(50)
+        val depoimentos = DepoimentoTest.buildLista(10)
+        every { repository.findAll() } returns depoimentos
+
         val listaAleatoria1 = service.escolheTresAleatorios()
         val listaAleatoria2 = service.escolheTresAleatorios()
 
+        verify(exactly = 2) { repository.findAll() }
         assertEquals(3, listaAleatoria1.size)
         assertEquals(3, listaAleatoria2.size)
 
         assertFalse(listaAleatoria1.containsAll(listaAleatoria2), "Deveriam ter conteudos diferentes")
     }
 
-    private fun criaDepoimentos(qtdeDepoimentos : Int){
-        for (i in 0 until qtdeDepoimentos){
-            val depoimento = Depoimento(
-                0L,
-                "nome $i",
-                "url foto $i",
-                "depoimento $i")
+    @Test
+    @DisplayName("Dado um id, deve retornar o depoimento")
+    fun buscaPoIdCenario1() {
+        every { repository.findById(any()) } returns Optional.of(depoimento)
 
-            em.persist(depoimento)
-        }
+        val depoimento = service.buscaPorId(1)
+
+        verify(exactly = 1) { repository.findById(any()) }
+        assertNotNull(depoimento, "deveria ter retornado um depoimento")
     }
+
+    @Test
+    @DisplayName("Dado um id inexistente, deve retornar exception")
+    fun buscaPoIdCenario2() {
+        every { repository.findById(Mockito.anyLong()) } returns Optional.empty()
+
+        assertThrows<DepoimentoNaoEncontradoException> { service.buscaPorId(Mockito.anyLong()) }
+    }
+
 }
