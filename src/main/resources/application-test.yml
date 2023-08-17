@@ -1,0 +1,3 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3080/api_jornadamilhas_test
