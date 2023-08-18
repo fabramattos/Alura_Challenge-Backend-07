@@ -2,7 +2,7 @@ package br.com.jornadamilhas.api.domain.destino
 
 import java.math.BigDecimal
 
-data class DtoDetalhamentoHomeDestinos(val id: Long,
+data class DtoDetalhamentoHomeDestinos(val id: Long?,
                                        val foto1Url: String,
                                        var nome: String,
                                        var preco: BigDecimal)

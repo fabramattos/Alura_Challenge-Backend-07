@@ -3,11 +3,10 @@ package br.com.jornadamilhas.api.domain.destino
 import jakarta.persistence.*
 import java.math.BigDecimal
 
-@Table(name = "destinos")
 @Entity(name = "Destino")
 class Destino(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id : Long,
+    val id : Long? = null,
     var foto1Url: String,
     var foto2Url: String,
     var nome: String,

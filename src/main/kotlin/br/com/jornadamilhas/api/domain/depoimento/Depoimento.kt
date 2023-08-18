@@ -3,11 +3,10 @@ package br.com.jornadamilhas.api.domain.depoimento
 import jakarta.persistence.*
 import org.jetbrains.annotations.NotNull
 
-@Table(name = "depoimentos")
 @Entity(name = "Depoimento")
 class Depoimento(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0L,
+    var id: Long? = null,
     @NotNull
     var nome : String,
     @NotNull

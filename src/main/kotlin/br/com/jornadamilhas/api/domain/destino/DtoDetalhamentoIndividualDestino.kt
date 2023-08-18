@@ -1,6 +1,6 @@
 package br.com.jornadamilhas.api.domain.destino
 
-data class DtoDetalhamentoIndividualDestino(val id: Long,
+data class DtoDetalhamentoIndividualDestino(val id: Long?,
                                             val foto1Url: String,
                                             val foto2Url: String,
                                             var nome: String,
