@@ -60,9 +60,20 @@ class DepoimentoServiceTest {
     @Test
     @DisplayName("Dado um id inexistente, deve retornar exception")
     fun buscaPoIdCenario2() {
-        every { repository.findById(Mockito.anyLong()) } returns Optional.empty()
+        every { repository.findById(any()) } returns Optional.empty()
 
         assertThrows<DepoimentoNaoEncontradoException> { service.buscaPorId(Mockito.anyLong()) }
+    }
+
+    @Test
+    @DisplayName("Dado um DTO válido para atualização de depoimento, deve retornar o depoimento atualizado")
+    fun atualizaDepoimento(){
+        every { repository.findById(any()) } returns Optional.of(DepoimentoTest.build())
+
+        val depoimentoAtualizado = service.atualiza(DtoAtualizacaoDepoimento(1, null, null, "ATUALIZADO"))
+
+        verify (exactly = 1) {repository.findById(any())}
+        assertEquals("ATUALIZADO", depoimentoAtualizado.depoimento)
     }
 
 }

@@ -80,7 +80,7 @@ class DestinoControllerTest(
 
         Mockito
             .`when`(repository.findAllByNome(Mockito.anyString()))
-            .thenReturn(destinos)
+            .thenReturn(Optional.of(destinos))
 
         mockMvc
             .perform(
