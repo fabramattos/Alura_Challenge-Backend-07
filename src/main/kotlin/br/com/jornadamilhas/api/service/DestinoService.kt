@@ -12,42 +12,37 @@ import org.springframework.stereotype.Service
 @Service
 class DestinoService(private val repository: DestinoRepository, private val geradorDescricao : GeradorDescricao) {
     fun save(dados: DtoCadastroDestino): Destino {
-        if(dados.descricao.isNullOrEmpty())
+        if (dados.descricao.isNullOrEmpty())
             dados.descricao = geradorDescricao.geraDescricao()
         val destino = Destino(dados)
         return repository.save(destino)
     }
 
-    fun buscaPorNome(nome: String) : List<Destino> {
-        val destinos = repository.findAllByNome(nome)
-
-        if(destinos.isEmpty())
-            throw DestinoNaoEncontradoException()
-
-        return destinos
-    }
-
-    fun buscaComPaginacao(paginacao: Pageable): Page<Destino>{
-        val destinos = repository.findAll(paginacao)
-
-        if(destinos.isEmpty)
-            throw DestinoNaoEncontradoException()
-
-        return destinos
-    }
-
+    fun buscaPorNome(nome: String): List<Destino> =
+        repository
+            .findAllByNome(nome)
+            .orElseThrow { DestinoNaoEncontradoException() }
 
     fun buscaPorId(id: Long): Destino = repository
         .findById(id)
-        .orElseThrow { DestinoNaoEncontradoException()}
+        .orElseThrow { DestinoNaoEncontradoException() }
 
     fun atualiza(dados: DtoAtualizacaoDestino): Destino =
         buscaPorId(dados.id)
             .atualiza(dados)
 
-    fun delete(id: Long){
+    fun delete(id: Long) {
         val destino = buscaPorId(id)
         repository.delete(destino)
+    }
+
+    fun busca(paginacao: Pageable): Page<Destino> {
+        val destinos = repository.findAll(paginacao)
+
+        if (destinos.isEmpty)
+            throw DestinoNaoEncontradoException()
+
+        return destinos
     }
 
 }

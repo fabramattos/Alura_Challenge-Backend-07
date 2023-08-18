@@ -3,7 +3,6 @@ package br.com.jornadamilhas.api.controller
 import br.com.jornadamilhas.api.domain.destino.*
 import br.com.jornadamilhas.api.service.DestinoService
 import jakarta.validation.Valid
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
@@ -43,9 +42,9 @@ class DestinoController(private val service : DestinoService) {
     }
 
     @GetMapping
-    fun listarHome(@PageableDefault(size = 6, sort = ["nome"] ) paginacao : Pageable) : ResponseEntity<Page<DtoDetalhamentoHomeDestinos>>{
+    fun listarHome(@PageableDefault(size = 6, sort = ["nome"] ) paginacao : Pageable) : ResponseEntity<Any>{
         val destinos = service
-            .buscaComPaginacao(paginacao)
+            .busca(paginacao)
             .map { DtoDetalhamentoHomeDestinos(it) }
 
         return ResponseEntity.ok(destinos)
