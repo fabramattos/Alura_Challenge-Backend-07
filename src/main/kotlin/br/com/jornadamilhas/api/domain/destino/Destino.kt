@@ -12,7 +12,7 @@ class Destino(
     var foto2Url: String,
     var nome: String,
     var meta: String,
-    var descricao: String? = null,
+    var descricao: String?,
     var preco: BigDecimal)
 
 {

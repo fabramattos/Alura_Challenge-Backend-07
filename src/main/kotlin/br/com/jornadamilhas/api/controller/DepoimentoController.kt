@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
+@RequestMapping("/depoimentos")
 class DepoimentoController(private val service: DepoimentoService) {
 
     @Transactional
-    @PostMapping("/depoimentos")
+    @PostMapping
     fun criar(@RequestBody @Valid dados: DtoCadastroDepoimento,
               uriBuilder: UriComponentsBuilder,
     ): ResponseEntity<DtoDetalhamentoDepoimento> {
@@ -21,7 +22,7 @@ class DepoimentoController(private val service: DepoimentoService) {
         val depoimento = service.salvar(dados)
 
         val uri = uriBuilder
-            .path("depoimentos/{id}")
+            .path("/depoimentos/{id}")
             .buildAndExpand(depoimento.id)
             .toUri()
 
@@ -30,14 +31,14 @@ class DepoimentoController(private val service: DepoimentoService) {
             .body(DtoDetalhamentoDepoimento(depoimento))
     }
 
-    @GetMapping("/depoimentos")
+    @GetMapping
     fun exibir(@RequestParam id: Long): ResponseEntity<DtoDetalhamentoDepoimento> {
         val depoimento = service.buscaPorId(id)
         return ResponseEntity.ok(DtoDetalhamentoDepoimento(depoimento))
     }
 
     @Transactional
-    @PutMapping("/depoimentos")
+    @PutMapping
     fun atualiza(@RequestBody @Valid dados: DtoAtualizacaoDepoimento): ResponseEntity<DtoDetalhamentoDepoimento> {
         val depoimento =  service.atualiza(dados)
 
@@ -45,12 +46,12 @@ class DepoimentoController(private val service: DepoimentoService) {
     }
 
     @Transactional
-    @DeleteMapping("/depoimentos")
+    @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun delete(@RequestParam id: Long) = service.deletar(id)
+    fun delete(@RequestParam(required = true)  id: Long) = service.deletar(id)
 
 
-    @GetMapping("/depoimentos-home")
+    @GetMapping("/home")
     fun home(): ResponseEntity<List<DtoDetalhamentoDepoimento>> {
         val depoimentos = service
             .escolheTresAleatorios()

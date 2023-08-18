@@ -19,7 +19,7 @@ data class DtoCadastroDestino(
     @field: NotBlank @field: Size(max = 160)
     val meta: String,
 
-    val descricao: String?,
+    var descricao: String?,
 
     @field: NotNull
     val preco: BigDecimal

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
-@RequestMapping("destinos")
+@RequestMapping("/destinos")
 class DestinoController(private val service : DestinoService) {
 
     @Transactional
