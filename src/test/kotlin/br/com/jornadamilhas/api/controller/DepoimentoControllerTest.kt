@@ -199,7 +199,7 @@ class DepoimentoControllerTest(
     @DisplayName("Deveria exibir codigo 200 ao acessar a home")
     fun exibeHome() {
         mockMvc
-            .perform(get("/depoimentos-home"))
+            .perform(get("/depoimentos/home"))
             .andExpect(status().isOk)
     }
 
