@@ -23,6 +23,14 @@ class SecuritConfigurations(private val tokenFilter: TokenFilter){
         .sessionManagement { session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
         .authorizeHttpRequests{ req ->
             req.requestMatchers(HttpMethod.POST,"/login").permitAll()
+
+            req.requestMatchers(HttpMethod.POST,"/destinos**").hasAnyAuthority("ADMIN")
+            req.requestMatchers(HttpMethod.PUT,"/destinos**").hasAnyAuthority("ADMIN")
+            req.requestMatchers(HttpMethod.DELETE,"/destinos**").hasAnyAuthority("ADMIN")
+
+            req.requestMatchers(HttpMethod.POST,"/depoimentos**").hasAnyAuthority("USER")
+            req.requestMatchers(HttpMethod.PUT,"/depoimentos**").hasAnyAuthority("USER")
+            req.requestMatchers(HttpMethod.DELETE,"/depoimentos**").hasAnyAuthority("USER", "ADMIN")
             req.anyRequest().authenticated()
         }
         .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter().javaClass)
