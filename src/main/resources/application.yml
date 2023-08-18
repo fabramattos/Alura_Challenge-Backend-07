@@ -23,3 +23,6 @@ logging:
     org:
       springframework:
         :web: DEBUG
+
+jwt:
+  secret: 123456
