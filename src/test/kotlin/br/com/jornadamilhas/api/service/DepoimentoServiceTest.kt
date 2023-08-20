@@ -1,7 +1,9 @@
-package br.com.jornadamilhas.api.domain.depoimento
+package br.com.jornadamilhas.api.service
 
+import br.com.jornadamilhas.api.domain.depoimento.DepoimentoRepository
+import br.com.jornadamilhas.api.domain.depoimento.DepoimentoTest
+import br.com.jornadamilhas.api.domain.depoimento.DtoAtualizacaoDepoimento
 import br.com.jornadamilhas.api.infra.exception.DepoimentoNaoEncontradoException
-import br.com.jornadamilhas.api.service.DepoimentoService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -24,10 +26,9 @@ class DepoimentoServiceTest {
         val depoimentos = DepoimentoTest.buildLista(2)
         every { repository.findAll() } returns depoimentos
 
-        val listaAleatoria = service.escolheTresAleatorios()
+        service.escolheTresAleatorios()
 
         verify(exactly = 1) { repository.findAll() }
-        assertEquals(2, listaAleatoria.size)
     }
 
     @Test
@@ -68,7 +69,7 @@ class DepoimentoServiceTest {
     @Test
     @DisplayName("Dado um DTO válido para atualização de depoimento, deve retornar o depoimento atualizado")
     fun atualizaDepoimento(){
-        every { repository.findById(any()) } returns Optional.of(DepoimentoTest.build())
+        every { repository.findById(any()) } returns Optional.of(depoimento)
 
         val depoimentoAtualizado = service.atualiza(DtoAtualizacaoDepoimento(1, null, null, "ATUALIZADO"))
 

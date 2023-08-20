@@ -32,6 +32,7 @@ class DepoimentoService(private val repository: DepoimentoRepository) {
     }
 
     fun salvar(dados: DtoCadastroDepoimento) = repository.save(Depoimento(dados))
+
     fun buscaPorId(id: Long) = repository
         .findById(id)
         .orElseThrow { DepoimentoNaoEncontradoException() }
