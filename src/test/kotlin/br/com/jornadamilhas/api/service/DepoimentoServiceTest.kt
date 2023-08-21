@@ -16,7 +16,7 @@ import java.util.*
 
 class DepoimentoServiceTest {
 
-    private val repository = mockk<DepoimentoRepository> {}
+    private val repository = mockk<DepoimentoRepository>{}
     private val depoimento = DepoimentoTest.build()
     private val service = DepoimentoService(repository)
 

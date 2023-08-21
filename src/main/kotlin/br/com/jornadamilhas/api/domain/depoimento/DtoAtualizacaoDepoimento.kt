@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull
 
 data class DtoAtualizacaoDepoimento(
     @field: NotNull
-    val id: Long,
+    var id: Long,
 
     @field: URL
     val fotoUrl: String?,

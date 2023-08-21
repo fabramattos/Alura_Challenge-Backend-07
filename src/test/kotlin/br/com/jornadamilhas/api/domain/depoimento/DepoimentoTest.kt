@@ -17,10 +17,9 @@ object DepoimentoTest {
         return lista
     }
 
-    fun build() = Depoimento(
-        id = 1,
-        nome = "Melon Husk",
-        foto = "http://www.fotoUrl.com.br",
-        depoimento = "Depoimento"
-    )
+    fun build() :Depoimento {
+        val depoimento = Depoimento(DtoCadastroDepoimentoTest.build())
+        depoimento.id = 1L
+        return depoimento
+    }
 }
