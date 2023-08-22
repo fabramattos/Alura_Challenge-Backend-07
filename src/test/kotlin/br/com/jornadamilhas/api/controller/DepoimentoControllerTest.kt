@@ -1,10 +1,7 @@
 package br.com.jornadamilhas.api.controller
 
 import br.com.jornadamilhas.api.domain.depoimento.*
-import br.com.jornadamilhas.api.infra.exception.DtoException
 import br.com.jornadamilhas.api.integration.DatabaseContainerConfiguration
-import jakarta.transaction.Transactional
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,7 +17,6 @@ import org.testcontainers.junit.jupiter.Testcontainers
 @Testcontainers
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
-@Transactional
 @WithMockUser(authorities = ["USER"])
 class DepoimentoControllerTest(
     @Autowired private val mockMvc: MockMvc,
@@ -31,20 +27,19 @@ class DepoimentoControllerTest(
     @Autowired
     private lateinit var repository: DepoimentoRepository
 
-    private final val URI = "/depoimentos"
-    private final val DTO_CADASTRO = DtoCadastroDepoimentoTest.build()
-    private final val DEPOIMENTO = Depoimento(DTO_CADASTRO)
-    private final val DTO_ATUALIZACAO = DtoAtualizacaoDepoimentoTest.build()
+    private val URI = "/depoimentos"
+    private val DTO_CADASTRO = DtoCadastroDepoimentoTest.build()
+    private val DEPOIMENTO = DepoimentoTest.build()
 
-
-    @BeforeEach
-    fun setup() {
-    }
 
     @Test
     @DisplayName("Dado um json válido, Quando tentar criar um depoimento, Deve retornar HTTP 201 e o DTO do depoimento")
     fun criar1() {
-        salvaDepoimento()
+        mockMvc
+            .post(URI) {
+                contentType = MediaType.APPLICATION_JSON
+                content = jacksonDtoCadastro.write(DTO_CADASTRO).json
+            }
             .andExpect {
                 status { isCreated() }
             }
@@ -62,10 +57,10 @@ class DepoimentoControllerTest(
     @Test
     @DisplayName("Dado um id válido, Quando tentar exibir detalhes de um depoimento, Deve devolver HTTP 200")
     fun exibir1() {
-        salvaDepoimento()
+        val depoimento = salvaDepoimento()
 
         mockMvc
-            .get(URI) { param("id", buscaIdValido().toString()) }
+            .get(URI) { param("id", depoimento.id.toString()) }
             .andExpect { status { isOk() } }
     }
 
@@ -80,14 +75,13 @@ class DepoimentoControllerTest(
     @Test
     @DisplayName("Dado um JSON válido, Quando tentar atualizar um depoimento, Deve retornar HTTP 200")
     fun atualizar1() {
-        salvaDepoimento()
-
-        buscaIdValido()?.let { DTO_ATUALIZACAO.id = it }
+        val depoimento = salvaDepoimento()
+        val dtoAtualizacao = DtoAtualizacaoDepoimentoTest.build(depoimento.id!!)
 
         mockMvc
             .put(URI) {
                 contentType = MediaType.APPLICATION_JSON
-                content = jacksonDtoAtualizacao.write(DTO_ATUALIZACAO).json
+                content = jacksonDtoAtualizacao.write(dtoAtualizacao).json
             }
             .andExpect { status { isOk() } }
     }
@@ -103,12 +97,12 @@ class DepoimentoControllerTest(
     @Test
     @DisplayName("Dado um JSON válido com id inválido, Quando tentar atualizar um depoimento, Deve devolver HTTP 404")
     fun atualizar3() {
-        DTO_ATUALIZACAO.id = 9999
+        val dtoAtualizacao = DtoAtualizacaoDepoimentoTest.build(9999)
 
         mockMvc
             .put(URI) {
                 contentType = MediaType.APPLICATION_JSON
-                content = jacksonDtoAtualizacao.write(DTO_ATUALIZACAO).json
+                content = jacksonDtoAtualizacao.write(dtoAtualizacao).json
             }
             .andExpect { status { isBadRequest() } }
     }
@@ -116,11 +110,11 @@ class DepoimentoControllerTest(
     @Test
     @DisplayName("Dado um id válido, Quando tentar excluir um depoimento, Deve retornar HTTP 204")
     fun delete1() {
-        salvaDepoimento()
+        val depoimento = salvaDepoimento()
 
         mockMvc
             .delete(URI){
-                param("id", buscaIdValido().toString())
+                param("id", depoimento.id.toString())
             }
             .andExpect { status { isNoContent() } }
     }
@@ -139,17 +133,10 @@ class DepoimentoControllerTest(
     @DisplayName("Deveria exibir codigo 200 ao acessar a home")
     fun exibeHome() {
         salvaDepoimento()
-
         mockMvc
             .get(URI.plus("/home"))
             .andExpect { status { isOk() } }
     }
 
-    private fun salvaDepoimento() = mockMvc
-        .post(URI) {
-            contentType = MediaType.APPLICATION_JSON
-            content = jacksonDtoCadastro.write(DTO_CADASTRO).json
-        }
-
-    private fun buscaIdValido(): Long? = repository.findAll().get(0).id
+    private fun salvaDepoimento() = repository.save(DEPOIMENTO)
 }

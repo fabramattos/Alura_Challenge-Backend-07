@@ -1,5 +1,6 @@
 package br.com.jornadamilhas.api.integration
 
+import jakarta.transaction.Transactional
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.DynamicPropertyRegistry
@@ -8,6 +9,7 @@ import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.junit.jupiter.Container
 
 @ActiveProfiles("test")
+@Transactional
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 abstract class DatabaseContainerConfiguration {
 
@@ -18,7 +20,7 @@ abstract class DatabaseContainerConfiguration {
             withDatabaseName("testeDB")
             withUsername("teste")
             withPassword("123456")
-            withReuse(true)
+            withReuse(false)
         }
 
         @JvmStatic

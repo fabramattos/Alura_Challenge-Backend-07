@@ -84,7 +84,7 @@ class DestinoServiceTest {
     @Test
     @DisplayName("Dado um Dto para atualização, deve atualizar todos campos necessários")
     fun atualiza() {
-        val form = DtoAtualizacaoDestinoTest.atualizaTudoBuild()
+        val form = DtoAtualizacaoDestinoTest.build(1)
         every { repository.findById(any()) } returns Optional.of(destino)
 
         val destinoAtualizado = service.atualiza(form)
