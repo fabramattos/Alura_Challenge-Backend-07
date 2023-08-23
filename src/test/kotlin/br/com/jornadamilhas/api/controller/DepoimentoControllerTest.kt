@@ -2,6 +2,9 @@ package br.com.jornadamilhas.api.controller
 
 import br.com.jornadamilhas.api.domain.depoimento.*
 import br.com.jornadamilhas.api.integration.DatabaseContainerConfiguration
+import br.com.jornadamilhas.domain.depoimento.DepoimentoRepository
+import br.com.jornadamilhas.domain.depoimento.DtoAtualizacaoDepoimento
+import br.com.jornadamilhas.domain.depoimento.DtoCadastroDepoimento
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

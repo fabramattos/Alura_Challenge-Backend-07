@@ -1,5 +1,6 @@
 package br.com.jornadamilhas.api.domain.destino
 
+import br.com.jornadamilhas.domain.destino.DtoAtualizacaoDestino
 import java.math.BigDecimal
 
 object DtoAtualizacaoDestinoTest {

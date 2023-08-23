@@ -1,5 +1,7 @@
 package br.com.jornadamilhas.api.domain.depoimento
 
+import br.com.jornadamilhas.domain.depoimento.DtoAtualizacaoDepoimento
+
 object DtoAtualizacaoDepoimentoTest {
 
     fun build(id: Long) = DtoAtualizacaoDepoimento(

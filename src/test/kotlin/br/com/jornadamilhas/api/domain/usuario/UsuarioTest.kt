@@ -1,6 +1,7 @@
 package br.com.jornadamilhas.api.domain.usuario
 
-import br.com.jornadamilhas.api.domain.role.Role
+import br.com.jornadamilhas.domain.role.Role
+import br.com.jornadamilhas.domain.usuario.Usuario
 
 object UsuarioTest {
 

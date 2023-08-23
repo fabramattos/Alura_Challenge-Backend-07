@@ -1,9 +1,10 @@
 package br.com.jornadamilhas.api.service
 
-import br.com.jornadamilhas.api.domain.depoimento.DepoimentoRepository
+import br.com.jornadamilhas.domain.depoimento.DepoimentoRepository
 import br.com.jornadamilhas.api.domain.depoimento.DepoimentoTest
-import br.com.jornadamilhas.api.domain.depoimento.DtoAtualizacaoDepoimento
-import br.com.jornadamilhas.api.infra.exception.DepoimentoNaoEncontradoException
+import br.com.jornadamilhas.domain.depoimento.DtoAtualizacaoDepoimento
+import br.com.jornadamilhas.infra.exception.DepoimentoNaoEncontradoException
+import br.com.jornadamilhas.service.DepoimentoService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

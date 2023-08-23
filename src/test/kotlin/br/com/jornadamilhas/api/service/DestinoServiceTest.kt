@@ -1,10 +1,12 @@
 package br.com.jornadamilhas.api.service
 
-import br.com.jornadamilhas.api.domain.destino.DestinoRepository
+import br.com.jornadamilhas.domain.destino.DestinoRepository
 import br.com.jornadamilhas.api.domain.destino.DestinoTest
 import br.com.jornadamilhas.api.domain.destino.DtoAtualizacaoDestinoTest
 import br.com.jornadamilhas.api.domain.destino.DtoCadastroDestinoTest
-import br.com.jornadamilhas.api.infra.exception.DestinoNaoEncontradoException
+import br.com.jornadamilhas.infra.exception.DestinoNaoEncontradoException
+import br.com.jornadamilhas.service.DestinoService
+import br.com.jornadamilhas.service.GptService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

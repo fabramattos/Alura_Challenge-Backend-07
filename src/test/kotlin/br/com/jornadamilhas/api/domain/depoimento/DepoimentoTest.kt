@@ -1,5 +1,7 @@
 package br.com.jornadamilhas.api.domain.depoimento
 
+import br.com.jornadamilhas.domain.depoimento.Depoimento
+
 object DepoimentoTest {
 
     fun buildLista(qtde: Int): List<Depoimento> {
@@ -17,7 +19,7 @@ object DepoimentoTest {
         return lista
     }
 
-    fun build() :Depoimento {
+    fun build() : Depoimento {
         val depoimento = Depoimento(DtoCadastroDepoimentoTest.build())
         depoimento.id = 1L
         return depoimento

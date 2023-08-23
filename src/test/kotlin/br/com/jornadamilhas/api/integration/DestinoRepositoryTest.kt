@@ -1,6 +1,6 @@
 package br.com.jornadamilhas.api.integration
 
-import br.com.jornadamilhas.api.domain.destino.DestinoRepository
+import br.com.jornadamilhas.domain.destino.DestinoRepository
 import br.com.jornadamilhas.api.domain.destino.DestinoTest
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
