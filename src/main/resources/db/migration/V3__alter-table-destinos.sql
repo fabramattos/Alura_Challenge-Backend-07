@@ -5,7 +5,7 @@ ALTER TABLE destino
 ADD COLUMN foto2Url varchar(500) not null;
 
 ALTER TABLE destino
-ADD COLUMN meta text;
+ADD COLUMN meta varchar(160) not null;
 
 ALTER TABLE destino
 ADD COLUMN descricao text;
