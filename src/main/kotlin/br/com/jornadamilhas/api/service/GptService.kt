@@ -56,7 +56,7 @@ class GptService(
             ChatMessage(
                 role = ChatRole.User,
                 content = " Faça um resumo sobre $pais. " +
-                        "O resumo deve conter 2 parágrafos. Cada parágrafo com no máximo 200 caracteres. " +
+                        "O resumo deve conter 2 parágrafos. Cada parágrafo com no máximo 100 caracteres. " +
                         "Enfatize o porque o local merece uma visita (comida, paisagens, pontos turisticos, etc). " +
                         "Utilize uma linguagem informal."
             )

@@ -2,6 +2,7 @@ package br.com.jornadamilhas.api.controller
 
 import br.com.jornadamilhas.api.domain.depoimento.*
 import br.com.jornadamilhas.api.service.DepoimentoService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -11,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
 @RequestMapping("/depoimentos")
+@SecurityRequirement(name = "bearer-key")
 class DepoimentoController(private val service: DepoimentoService) {
 
     @Transactional

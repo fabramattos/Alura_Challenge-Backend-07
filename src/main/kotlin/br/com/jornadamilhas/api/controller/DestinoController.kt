@@ -2,6 +2,7 @@ package br.com.jornadamilhas.api.controller
 
 import br.com.jornadamilhas.api.domain.destino.*
 import br.com.jornadamilhas.api.service.DestinoService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
 @RequestMapping("/destinos")
+@SecurityRequirement(name = "bearer-key")
 class DestinoController(private val service : DestinoService) {
 
     @Transactional

@@ -22,15 +22,19 @@ class SecuritConfigurations(private val tokenFilter: TokenFilter){
         .csrf { csrf -> csrf.disable() }
         .sessionManagement { session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
         .authorizeHttpRequests{ req ->
-            req.requestMatchers(HttpMethod.POST,"/login").permitAll()
+            req.requestMatchers("/login").permitAll()
+            req.requestMatchers("/v3/api-docs/**").permitAll()
+            req.requestMatchers("/swagger-ui/**").permitAll()
 
-            req.requestMatchers(HttpMethod.POST,"/destinos**").hasAnyAuthority("ADMIN")
-            req.requestMatchers(HttpMethod.PUT,"/destinos**").hasAnyAuthority("ADMIN")
-            req.requestMatchers(HttpMethod.DELETE,"/destinos**").hasAnyAuthority("ADMIN")
+            req.requestMatchers(HttpMethod.POST,"/destinos/**").hasAnyAuthority("ADMIN")
+            req.requestMatchers(HttpMethod.PUT,"/destinos/**").hasAnyAuthority("ADMIN")
+            req.requestMatchers(HttpMethod.DELETE,"/destinos/**").hasAnyAuthority("ADMIN")
+            req.requestMatchers(HttpMethod.GET,"/destinos/**").permitAll()
 
-            req.requestMatchers(HttpMethod.POST,"/depoimentos**").hasAnyAuthority("USER")
-            req.requestMatchers(HttpMethod.PUT,"/depoimentos**").hasAnyAuthority("USER")
-            req.requestMatchers(HttpMethod.DELETE,"/depoimentos**").hasAnyAuthority("USER", "ADMIN")
+            req.requestMatchers(HttpMethod.POST,"/depoimentos/**").hasAnyAuthority("USER")
+            req.requestMatchers(HttpMethod.PUT,"/depoimentos/**").hasAnyAuthority("USER")
+            req.requestMatchers(HttpMethod.DELETE,"/depoimentos/**").hasAnyAuthority("USER", "ADMIN")
+            req.requestMatchers(HttpMethod.GET,"/depoimentos/**").permitAll()
             req.anyRequest().authenticated()
         }
         .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter().javaClass)

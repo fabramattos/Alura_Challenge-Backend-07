@@ -25,15 +25,19 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	// https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+	implementation("com.mysql:mysql-connector-j:8.1.0")
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.flywaydb:flyway-mysql")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("com.mysql:mysql-connector-j:8.1.0")	// https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
 	implementation("com.auth0:java-jwt:4.4.0")
 
 	// GPT OPEN AI
 	implementation("com.aallam.openai:openai-client:3.3.0")
 	runtimeOnly("io.ktor:ktor-client-okhttp:2.3.3")
+
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
 	compileOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
