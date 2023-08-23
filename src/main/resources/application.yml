@@ -26,3 +26,6 @@ logging:
 
 jwt:
   secret: 123456
+
+gpt:
+  secret: ${OPENAI_API_KEY:123456}

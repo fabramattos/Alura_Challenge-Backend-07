@@ -17,11 +17,11 @@ import java.util.*
 
 class DestinoServiceTest {
     private val repository = mockk<DestinoRepository>()
-    private val geradorDescricao = mockk<GeradorDescricao>() {
-        every { geraDescricao() } returns "descricao mockkada"
+    private val gptService = mockk<GptService>() {
+        every { geraDescricao(any()) } returns "descricao mockkada"
     }
     private val destino = DestinoTest.validoBuild()
-    private val service = DestinoService(repository, geradorDescricao)
+    private val service = DestinoService(repository, gptService)
 
     @Test
     @DisplayName("Dado um DtoDestino valido, deve salvar")
@@ -31,7 +31,7 @@ class DestinoServiceTest {
         service.save(DtoCadastroDestinoTest.validoBuild())
 
         verify(exactly = 1) { repository.save(any()) }
-        verify(exactly = 0) { geradorDescricao.geraDescricao() }
+        verify(exactly = 0) { gptService.geraDescricao(any()) }
     }
 
     @Test
@@ -41,7 +41,7 @@ class DestinoServiceTest {
         service.save(DtoCadastroDestinoTest.semDescricaoBuild())
 
         verify(exactly = 1) { repository.save(any()) }
-        verify(exactly = 1) { geradorDescricao.geraDescricao() }
+        verify(exactly = 1) { gptService.geraDescricao(any()) }
     }
 
     @Test

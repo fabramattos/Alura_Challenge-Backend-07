@@ -10,10 +10,10 @@ import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
-class DestinoService(private val repository: DestinoRepository, private val geradorDescricao : GeradorDescricao) {
+class DestinoService(private val repository: DestinoRepository, private val gptService : GptService) {
     fun save(dados: DtoCadastroDestino): Destino {
         if (dados.descricao.isNullOrEmpty())
-            dados.descricao = geradorDescricao.geraDescricao()
+            dados.descricao = gptService.geraDescricao(dados.nome)
         val destino = Destino(dados)
         return repository.save(destino)
     }

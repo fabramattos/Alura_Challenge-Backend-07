@@ -30,6 +30,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("com.mysql:mysql-connector-j:8.1.0")	// https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
 	implementation("com.auth0:java-jwt:4.4.0")
+
+	// GPT OPEN AI
+	implementation("com.aallam.openai:openai-client:3.3.0")
+	runtimeOnly("io.ktor:ktor-client-okhttp:2.3.3")
+
 	compileOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
@@ -49,4 +54,5 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	forkEvery = 1
 }

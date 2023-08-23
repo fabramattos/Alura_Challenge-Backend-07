@@ -20,7 +20,7 @@ abstract class DatabaseContainerConfiguration {
             withDatabaseName("testeDB")
             withUsername("teste")
             withPassword("123456")
-            withReuse(false)
+            withReuse(true)
         }
 
         @JvmStatic
