@@ -26,27 +26,30 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 * [**Docker**](https://www.docker.com/get-started/)
 
 
-
 ### Configuração do Banco de Dados
 1. Abra o arquivo docker-compose.yml e verifique as configurações do serviço MySQL.
-   Caso precise alterar algo, lembre-se de alterar também em Application.yml.
-
-2. Execute o seguinte comando na raiz do projeto para iniciar o contêiner do MySQL:
+2. Execute o docker-compose via IDE ou via terminal.
+   - via terminal: execute o seguinte comando na pasta onde se encontra o docker-compose.yml para iniciar o container com MySQL:
 ```
 docker-compose up -d mysql
 ```
 
 ### Configuração da Aplicação
 1. Abra o arquivo src/main/resources/application.yml.
-2. Caso tenha alterado algo no Docker-compose.yml, configure de acordo o acesso ao mySQL.
+2. Caso tenha alterado algo no Docker-compose.yml, faça as alterações necessárias para acesso ao mySQL.
 3. Configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de sistema.
+ - obs: Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado na API
 
-### Executando a Aplicação
-1. Na raiz do projeto, execute o seguinte comando para compilar e executar a aplicação:
-```
-./gradlew bootRun
-```
+
+## Executando a Aplicação
+1. Na IDE, execute a main
 2. A aplicação estará disponível em http://localhost:8080.
 
-### Observações
-Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado na API
+## Testando a Api / Acesso aos Endoints
+Para testar a API, pode-se utilizar Postman ou ferramenta semelhante acesando a url http://localhost:8080/ (endpoint desejado).
+Porém, para facilitar, está disponibilizado o Swagger-UI
+
+### Acessando via Swagger-ui
+A partir do Swagger UI, você pode explorar todos os endpoints disponíveis, visualizar os parâmetros necessários para cada requisição, bem como testar cada endpoint interativamente.
+1. Após a API estar em execução, acesse: [Swagger-UI](http://localhost:8080/swagger-ui/index.html)
+2. A API possui segurança de Token JWT e Role. Informações sobre Login e recebimento de Token JWT estarão no Swagger-UI
