@@ -50,6 +50,6 @@ Para testar a API, pode-se utilizar Postman ou ferramenta semelhante acesando a 
 Porém, para facilitar, está disponibilizado o Swagger-UI
 
 ### Acessando via Swagger-ui
-A partir do Swagger UI, você pode explorar todos os endpoints disponíveis, visualizar os parâmetros necessários para cada requisição, bem como testar cada endpoint interativamente.
+A partir do Swagger UI, **diretamente no navegador** você pode explorar todos os endpoints disponíveis, visualizar os parâmetros necessários para cada requisição, bem como testar cada endpoint interativamente.
 1. Após a API estar em execução, acesse: http://localhost:8080/swagger-ui/index.html
 2. A API possui segurança de Token JWT e Role. Informações sobre Login e recebimento de Token JWT estarão no Swagger-UI
