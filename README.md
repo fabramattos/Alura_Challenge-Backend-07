@@ -4,7 +4,6 @@ A API fornece informações sobre destinos de viagem, depoimentos de viajantes e
 
 ## Tecnologias Utilizadas
 O projeto foi desenvolvido utilizando as seguintes tecnologias e bibliotecas:
-
 * **Spring Boot:** Framework Java para criação de aplicações web e APIs.
 * **Spring Data JPA:** Biblioteca para acesso e manipulação de bancos de dados utilizando JPA.
 * **Spring Validation:** Biblioteca para validação de dados de entrada.
@@ -23,33 +22,31 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias e bibliotecas:
 ## Configuração do Projeto para Execução Local
 ### Pré-requisitos
 Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+* [**Java Development Kit (JDK)**](https://www.oracle.com/java/technologies/downloads/)
+* [**Docker**](https://www.docker.com/get-started/)
 
-Java Development Kit (JDK)
-Docker
-Docker Compose
-Configuração do Banco de Dados
-Abra o arquivo docker-compose.yml e verifique as configurações do serviço MySQL.
 
-Execute o seguinte comando na raiz do projeto para iniciar o contêiner do MySQL:
 
-bash
-Copy code
+### Configuração do Banco de Dados
+1. Abra o arquivo docker-compose.yml e verifique as configurações do serviço MySQL.
+   Caso precise alterar algo, lembre-se de alterar também em Application.yml.
+
+2. Execute o seguinte comando na raiz do projeto para iniciar o contêiner do MySQL:
+```
 docker-compose up -d mysql
-Configuração da Aplicação
-Abra o arquivo src/main/resources/application.yml.
+```
 
-Configure o acesso ao banco de dados, substituindo <username> e <password> pelas credenciais apropriadas.
+### Configuração da Aplicação
+1. Abra o arquivo src/main/resources/application.yml.
+2. Caso tenha alterado algo no Docker-compose.yml, configure de acordo o acesso ao mySQL.
+3. Configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de sistema.
 
-Configure a chave secreta JWT e a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais.
-
-Executando a Aplicação
-Na raiz do projeto, execute o seguinte comando para compilar e executar a aplicação:
-
-bash
-Copy code
+### Executando a Aplicação
+1. Na raiz do projeto, execute o seguinte comando para compilar e executar a aplicação:
+```
 ./gradlew bootRun
-A aplicação estará disponível em http://localhost:8080.
+```
+2. A aplicação estará disponível em http://localhost:8080.
 
-Observações
-Certifique-se de que as variáveis de sistema OPENAI_API_KEY estão configuradas com a chave secreta da OpenAI.
-Caso necessário, ajuste as configurações de portas nos arquivos de configuração.
+### Observações
+Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado na API
