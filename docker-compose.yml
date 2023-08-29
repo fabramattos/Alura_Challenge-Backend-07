@@ -17,7 +17,7 @@ services:
       timeout: 10s
 
   api:
-    image: jornada-milhas-api:v1.0
+    image: jornada-milhas-api
     container_name: api-container
     environment:
       DB_HOST: database
