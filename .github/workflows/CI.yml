@@ -19,9 +19,6 @@ jobs:
           java-version: 17
           distribution: 'temurin'
 
-      - name: Set up Gradle
-        uses: gradle/gradle-build-action@v3
-
       - name: Gradle Clean
         run: ./gradlew clean
 
