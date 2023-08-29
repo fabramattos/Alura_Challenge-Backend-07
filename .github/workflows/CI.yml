@@ -22,9 +22,6 @@ jobs:
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Gradle Clean
-        run: ./gradlew clean
-
       - name: Gradle Build
         run: ./gradlew build
 
