@@ -1,6 +1,17 @@
 # Projeto API de Destinos de Viagem
+
 Este repositório contém o código-fonte e as configurações necessárias para executar a API de Destinos de Viagem desenvolvida como parte do Challenge Backend 7ª edição da Alura.
 A API fornece informações sobre destinos de viagem, depoimentos de viajantes e integração com uma IA para aprimorar a experiência do usuário.
+
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **Projeto API de Destinos de Viagem**
+| :label: Tecnologias | Kotlin, SpringBoot, Docker, mySQL, OpenAI
+| :rocket: URL         |
+| :fire: Desafio     | [Backend 7ª edição](https://www.alura.com.br/challenges/back-end-7/semana-01-classes-relacionamentos-depoimentos)
+
+<!-- Inserir imagem com a #vitrinedev ao final do link -->
+![](https://seranking.com/blog/wp-content/uploads/2021/01/404_01-min.jpg#vitrinedev)
 
 ## Tecnologias Utilizadas
 O projeto foi desenvolvido utilizando as seguintes tecnologias e bibliotecas:
