@@ -37,24 +37,24 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 * [**Docker**](https://www.docker.com/get-started/)
 
 
-### Configuração do Banco de Dados
-1. Abra o arquivo docker-compose.yml e verifique as configurações do serviço MySQL.
-2. Execute o docker-compose via IDE ou via terminal.
-   - via terminal: execute o seguinte comando na pasta onde se encontra o docker-compose.yml para iniciar o container com MySQL:
+### Iniciando a aplicação:
+1. Em *src/main/resources/application.yml*, configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de sistema.
+ - obs: Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado pela API
+2. Faça o build do projeto com:
 ```
-docker-compose up -d mysql
+./gradlew clean build
 ```
+3. No terminal, na pasta raiz do projeto, execute:
+```
+docker build -t jornada-milhas-api .
+```
+4. execute:
+```
+docker compose -p jornada-milhas up
+```
+5. A aplicação estará disponível em http://localhost:8080.
 
-### Configuração da Aplicação
-1. Abra o arquivo src/main/resources/application.yml.
-2. Caso tenha alterado algo no Docker-compose.yml, faça as alterações necessárias para acesso ao mySQL.
-3. Configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de sistema.
- - obs: Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado na API
-
-
-## Executando a Aplicação
-1. Na IDE, execute a main
-2. A aplicação estará disponível em http://localhost:8080.
+   
 
 ## Testando a Api / Acesso aos Endoints
 Para testar a API, pode-se utilizar Postman ou ferramenta semelhante acesando a url http://localhost:8080/ (endpoint desejado).
