@@ -28,4 +28,4 @@ services:
       database:
         condition: service_healthy
 
-# docker compose run -p <nome-stack>
+# docker compose -p <nome-stack> up
