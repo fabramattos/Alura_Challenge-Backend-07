@@ -23,6 +23,9 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: Gradle Build
+        run: ./gradlew clean
+
+      - name: Gradle Build
         run: ./gradlew build
 
       - name: Cria Imagem Docker da API
