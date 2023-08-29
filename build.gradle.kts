@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "br.com.jornadamilhas"
-version = "0.0.1-SNAPSHOT"
+version = "jornada-milhas-v1.0"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_17
@@ -57,6 +57,11 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
+	//enabled = false; //comentar essa linha para permitir testes no build
 	useJUnitPlatform()
 	forkEvery = 1
+}
+
+tasks.getByName<Jar>("jar") {
+	enabled = false
 }

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  database:
+    image: mysql:8.1
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jornadamilhas
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
+
+  api:
+    image: jornada-milhas-api:v1.0
+    container_name: jornada-milhas-api-container
+    environment:
+      DB_HOST: database
+      DB_PORT: 3306
+    ports:
+      - "8080:8080"
+    depends_on:
+      database:
+        condition: service_healthy
