@@ -18,7 +18,7 @@ services:
 
   api:
     image: jornada-milhas-api:v1.0
-    container_name: jornada-milhas-api-container
+    container_name: api-container
     environment:
       DB_HOST: database
       DB_PORT: 3306
@@ -27,3 +27,5 @@ services:
     depends_on:
       database:
         condition: service_healthy
+
+# docker compose run -p <nome-stack>
