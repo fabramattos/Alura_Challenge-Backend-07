@@ -1,6 +1,8 @@
 package br.com.jornadamilhas.api.controller
 
-import br.com.jornadamilhas.api.domain.destino.*
+import br.com.jornadamilhas.api.domain.destino.DestinoTest
+import br.com.jornadamilhas.api.domain.destino.DtoAtualizacaoDestinoTest
+import br.com.jornadamilhas.api.domain.destino.DtoCadastroDestinoTest
 import br.com.jornadamilhas.api.integration.DatabaseContainerConfiguration
 import br.com.jornadamilhas.domain.destino.DestinoRepository
 import br.com.jornadamilhas.domain.destino.DtoAtualizacaoDestino
@@ -14,9 +16,7 @@ import org.springframework.boot.test.json.JacksonTester
 import org.springframework.http.MediaType
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.*
-import org.testcontainers.junit.jupiter.Testcontainers
 
-@Testcontainers
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
 @WithMockUser(authorities = ["ADMIN"])

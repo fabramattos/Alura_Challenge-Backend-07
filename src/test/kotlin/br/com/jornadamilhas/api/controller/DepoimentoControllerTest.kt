@@ -1,6 +1,8 @@
 package br.com.jornadamilhas.api.controller
 
-import br.com.jornadamilhas.api.domain.depoimento.*
+import br.com.jornadamilhas.api.domain.depoimento.DepoimentoTest
+import br.com.jornadamilhas.api.domain.depoimento.DtoAtualizacaoDepoimentoTest
+import br.com.jornadamilhas.api.domain.depoimento.DtoCadastroDepoimentoTest
 import br.com.jornadamilhas.api.integration.DatabaseContainerConfiguration
 import br.com.jornadamilhas.domain.depoimento.DepoimentoRepository
 import br.com.jornadamilhas.domain.depoimento.DtoAtualizacaoDepoimento
@@ -15,9 +17,8 @@ import org.springframework.http.MediaType
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import org.testcontainers.junit.jupiter.Testcontainers
 
-@Testcontainers
+
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
 @WithMockUser(authorities = ["USER"])

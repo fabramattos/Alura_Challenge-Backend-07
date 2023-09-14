@@ -25,6 +25,9 @@ jobs:
       - name: Gradle Clean
         run: ./gradlew clean
 
+      - name: Create Build Directories
+        run: mkdir -p build/libs
+
       - name: Gradle Build with -prod.yml
         run: ./gradlew build -Pspring.profiles.active=prod
 

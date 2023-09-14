@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "br.com.jornadamilhas"
-version = "jornada-milhas-v1.0"
+version = "1.0"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_17

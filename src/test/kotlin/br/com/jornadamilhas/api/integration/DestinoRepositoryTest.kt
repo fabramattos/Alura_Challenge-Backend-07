@@ -1,19 +1,13 @@
 package br.com.jornadamilhas.api.integration
 
-import br.com.jornadamilhas.domain.destino.DestinoRepository
 import br.com.jornadamilhas.api.domain.destino.DestinoTest
+import br.com.jornadamilhas.domain.destino.DestinoRepository
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
-import org.springframework.test.context.ActiveProfiles
-import org.testcontainers.junit.jupiter.Testcontainers
 
-@Testcontainers
-@ActiveProfiles("test")
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class DestinoRepositoryTest(@Autowired private val repository: DestinoRepository)
     : DatabaseContainerConfiguration(){
 
