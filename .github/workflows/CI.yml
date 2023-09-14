@@ -22,11 +22,19 @@ jobs:
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v2.8.0
 
-      - name: Gradle Build
+      - name: Gradle Clean
         run: ./gradlew clean
 
       - name: Gradle Build with -prod.yml
         run: ./gradlew build -Pspring.profiles.active=prod
 
-      - name: Cria Imagem Docker da API
+      - name: Docker Image Build
         run: docker build -t jornada-milhas-api .
+
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy to Railway
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
