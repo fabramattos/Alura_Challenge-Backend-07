@@ -38,19 +38,19 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
 
 ### Iniciando a aplicação:
-1. Em *src/main/resources/application.yml*, configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de sistema.
+1. Em *src/main/resources/application.yml*, configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de ambiente.
  - obs: Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado pela API
 2. Faça o build do projeto com:
 ```
 ./gradlew clean build
 ```
-3. No terminal, na pasta raiz do projeto, execute:
+3. No terminal, na pasta raiz do projeto, gere uma imagem docker:
 ```
-docker build -t jornada-milhas-api .
+docker build -t jornada-milhas-api-dev -f Dockerfile-dev .
 ```
-4. execute:
+4. Abra e execute o arquivo docker-compose, ou, via terminal:
 ```
-docker compose -p jornada-milhas up
+docker compose -p jornada-milhas-api-dev up
 ```
 5. A aplicação estará disponível em http://localhost:8080.
 
