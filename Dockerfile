@@ -8,7 +8,7 @@ COPY  build/libs/*.jar /app/app.jar
 #ENV JWT_SECRET=123456
 
 EXPOSE 8080
-#ENTRYPOINT ["java","-jar","app.jar","-e DB_URL=$MYSQL_URL -e DB_USER=$MYSQLUSER -e DB_PASSWORD=$MYSQLPASSWORD -e JWT_SECRET=$JWT_SECRET"]
-CMD java -XX:+UseContainerSupport -jar app.jar
+ENTRYPOINT ["java","-jar","app.jar","--spring.profiles.active=prod"]
+#CMD java -XX:+UseContainerSupport -jar app.jar
 
 # docker build -t jornada-milhas-api .
