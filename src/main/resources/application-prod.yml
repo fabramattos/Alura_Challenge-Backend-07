@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://root:js0OsZwEqPCtih2eqzTl@containers-us-west-148.railway.app:7711/railway
-    username: root
-    password: js0OsZwEqPCtih2eqzTl
+    url: jdbc:${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
 
 jwt:
   secret: ${JWT_SECRET}
