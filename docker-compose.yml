@@ -20,7 +20,7 @@ services:
       timeout: 10s
 
   api:
-    image: jornada-milhas-api
+    image: jornada-milhas-api-dev
     container_name: api-container
     networks:
       - compose-bridge

@@ -41,6 +41,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerfile-prod-prod
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/api-jornada-milhas:latest
