@@ -11,13 +11,12 @@ spring:
         page-parameter: page
 
   jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
     properties:
       hibernate:
+        show-sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+        ddl-auto: none
 
 logging:
   level:
