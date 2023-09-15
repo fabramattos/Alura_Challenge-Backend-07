@@ -9,6 +9,6 @@ ENV JWT_SECRET=minha_chave_secreta
 
 EXPOSE 8080
 
-ENTRYPOINT["java", "-XX:+UseContainerSupport", "-jar", "app.jar"]
+CMD java -XX:+UseContainerSupport -jar app.jar
 
 # docker build -t jornada-milhas-api .
