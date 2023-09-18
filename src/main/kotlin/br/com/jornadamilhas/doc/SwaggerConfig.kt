@@ -25,19 +25,25 @@ class SwaggerConfig {
                 .title("API Challenge Backend 7ª edição")
                 .description(
                     """
-                    Api para gerenciar um site de viagens, com banco de dados de depoimentos e destinos.
-                    Contem integração com ChatGPT para gerar descrição do destino caso não informado
-                    manualmente durante o cadastro.
-                    Acesso controlado por token e permissões de usuario.
-                    
-                    Para login e gerar o token JWT, utilize:
-                    
-                    usuarios: admin@email.com ou user@email.com
-                    
-                    senha: 123456
-                    
-                    Caso a chave da OpenAi não esteja configurada, um texto padrão será gerado.
-                    """.trimIndent())
+                    ||========================================================================================||
+                    ||   Api para gerenciar dados de um site de viagens contendo depoimentos e destinos.      ||
+                    ||   Integração com ChatGPT: gera campo 'descrição' do destino caso não informado         ||
+                    ||   manualmente durante o cadastro. Caso não tenha sido configurada a chave de acesso    ||
+                    ||   da openAI, gera um texto padrão.                                                     ||
+                    ||                                                                                        ||
+                    ||   Acesso controlado por token e permissões de usuario.                                 ||
+                    ||==========================================================================================
+                      
+                                        
+                    ||=======================================================||
+                    ||                                                       ||       
+                    ||       Para login e gerar o token JWT, utilize:        ||
+                    ||                                                       ||
+                    ||       usuario: admin@email.com | senha: 123456        ||
+                    ||       usuario: user@email.com  | senha: 123456        ||
+                    ||                                                       ||
+                    ||=======================================================||
+                    """)
                 .contact(
                     Contact()
                     .name("Felipe Mattos")

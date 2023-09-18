@@ -25,6 +25,7 @@ class SecuritConfigurations(private val tokenFilter: TokenFilter){
             req.requestMatchers("/login").permitAll()
             req.requestMatchers("/v3/api-docs/**").permitAll()
             req.requestMatchers("/swagger-ui/**").permitAll()
+            req.requestMatchers("/").permitAll()
 
             req.requestMatchers(HttpMethod.POST,"/destinos/**").hasAnyAuthority("ADMIN")
             req.requestMatchers(HttpMethod.PUT,"/destinos/**").hasAnyAuthority("ADMIN")
