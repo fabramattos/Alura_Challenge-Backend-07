@@ -57,10 +57,10 @@ docker compose -p jornada-milhas-api-dev up
    
 
 ## Testando a Api / Acesso aos Endoints
-Para testar a API, pode-se utilizar Postman ou ferramenta semelhante acesando a url http://localhost:8080/ (endpoint desejado).
-Porém, para facilitar, está disponibilizado o Swagger-UI
+Para testar a API, pode-se utilizar Postman ou ferramenta semelhante acesando a url http://localhost:8080/(endpoint_desejado).
+Porém, para facilitar, está disponibilizado o Swagger-UI diretamente na raiz http://localhost:8080 pelo navegador
 
 ### Acessando via Swagger-ui
 A partir do Swagger UI, **diretamente no navegador** você pode explorar todos os endpoints disponíveis, visualizar os parâmetros necessários para cada requisição, bem como testar cada endpoint interativamente.
-1. Após a API estar em execução, acesse: http://localhost:8080/swagger-ui/index.html
+1. Após a API estar em execução, acesse: http://localhost:8080/
 2. A API possui segurança de Token JWT e Role. Informações sobre Login e recebimento de Token JWT estarão no Swagger-UI
