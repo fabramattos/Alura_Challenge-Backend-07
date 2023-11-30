@@ -8,7 +8,7 @@ on:
       - master
     
 jobs:
-  build:
+  executa_testes:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +22,13 @@ jobs:
           distribution: 'temurin'
 
       - name: Set up Gradle
-        uses: gradle/gradle-build-action@v2.8.0
+        uses: gradle/gradle-build-action@v2.10.0
 
-      - name: Torna Gradlew Executavel
+      - name: Change wrapper permissions
         run: chmod +x ./gradlew
+
+      - name: Init gradle wrapper
+        run: gradle wrapper
 
       - name: Gradle Clean
         run: ./gradlew clean
