@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -24,11 +27,8 @@ jobs:
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v2.10.0
 
-      - name: Change wrapper permissions
+      - name: Concede permissoes
         run: chmod +x ./gradlew
-
-      - name: Init gradle wrapper
-        run: gradle wrapper
 
       - name: Gradle Clean
         run: ./gradlew clean

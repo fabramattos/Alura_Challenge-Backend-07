@@ -24,11 +24,8 @@ jobs:
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v2.10.0
 
-      - name: Change wrapper permissions
+      - name: Concede permissoes
         run: chmod +x ./gradlew
-
-      - name: Init gradle wrapper
-        run: gradle wrapper
 
       - name: Gradle Clean
         run: ./gradlew clean
