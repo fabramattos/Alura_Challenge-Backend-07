@@ -9,4 +9,3 @@ class ApplicationApi
 fun main(args: Array<String>) {
     runApplication<ApplicationApi>(*args)
 }
-//adicionado para rodar CI/CD ao comitar
