@@ -24,6 +24,9 @@ jobs:
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v2.8.0
 
+      - name: Torna Gradlew Executavel
+        run: chmod +x ./gradlew
+
       - name: Gradle Clean
         run: ./gradlew clean
 
