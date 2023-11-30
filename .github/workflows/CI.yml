@@ -1,0 +1,31 @@
+# Executa todos testes antes de autorizar um merge na Master
+
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v2.8.0
+
+      - name: Gradle Clean
+        run: ./gradlew clean
+
+      - name: Executa Testes
+        run: ./gradlew test
