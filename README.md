@@ -11,7 +11,7 @@ A API fornece informações sobre destinos de viagem, depoimentos de viajantes e
 | :fire: Desafio     | [Backend 7ª edição](https://www.alura.com.br/challenges/back-end-7/semana-01-classes-relacionamentos-depoimentos)
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://seranking.com/blog/wp-content/uploads/2021/01/404_01-min.jpg#vitrinedev)
+![koala](https://github.com/fabramattos/Alura_Challenge-Backend-07/assets/45768087/a851dfab-4a6d-4f84-860d-e0b5e2046ed3#vitrinedev)
 
 ## Tecnologias Utilizadas
 O projeto foi desenvolvido utilizando as seguintes tecnologias e bibliotecas:
@@ -38,8 +38,8 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
 
 ### Iniciando a aplicação:
-1. Em *src/main/resources/application.yml*, configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de ambiente.
- - obs: Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado pela API
+1. Em *src/main/resources/application.yml*, configure a chave secreta da OpenAI, substituindo os valores 123456 pelos valores reais ou configurando em variáveis de ambiente.<br>
+obs: Caso não tenha uma conta na openAi para utilizar sua chave secreta, o GPT não será utilizado pela API
 2. Faça o build do projeto com:
 ```
 ./gradlew clean build
@@ -57,8 +57,8 @@ docker compose -p jornada-milhas-api-dev up
    
 
 ## Testando a Api / Acesso aos Endoints
-Para testar a API, pode-se utilizar Postman ou ferramenta semelhante acesando a url http://localhost:8080/(endpoint_desejado).
-Porém, para facilitar, está disponibilizado o Swagger-UI diretamente na raiz http://localhost:8080 pelo navegador
+Para testar a API, pode-se utilizar Postman ou ferramenta semelhante acesando a url http://localhost:8080/(endpoint_desejado).<br>
+Porém, para facilitar, está disponibilizado o Swagger-UI em http://localhost:8080 pelo navegador.
 
 ### Acessando via Swagger-ui
 A partir do Swagger UI, **diretamente no navegador** você pode explorar todos os endpoints disponíveis, visualizar os parâmetros necessários para cada requisição, bem como testar cada endpoint interativamente.
