@@ -1,3 +1,4 @@
+*Change language:* [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/fabramattos/Alura_Challenge-Backend-07)<br>
 # Projeto API de Destinos de Viagem
 
 Este repositório contém o código-fonte e as configurações necessárias para executar a API de Destinos de Viagem desenvolvida como parte do Challenge Backend 7ª edição da Alura.
